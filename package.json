@@ -1,0 +1,20 @@
+{
+  "name": "dmmulroy-skills",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Dillon Mulroy's personal agent skills",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmmulroy/skills"
+  },
+  "license": "MIT",
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.30.0"
+  },
+  "packageManager": "npm@11.13.0"
+}
