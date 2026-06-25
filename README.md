@@ -9,6 +9,22 @@ These skills are designed to work together:
 - `tech-spec/` — user-invoked typed call-stack architecture handoff workflow. Produces code-shaped specs with alternatives, interfaces, seams, adapters, call stacks, and an RGR TDD plan.
 - `improve-codebase-architecture/` — user-invoked architecture scan workflow. Finds standards-backed refactor opportunities and prepares focused briefs for `tech-spec`.
 
+### Vendored from Matt Pocock
+
+These skills are vendored from [mattpocock/skills](https://github.com/mattpocock/skills) so our workflows are self-contained for consumers (e.g. `tech-spec` and `improve-codebase-architecture` route into the grilling skills). Do not edit them by hand; re-sync instead.
+
+- `grilling/` — model-invoked relentless interview loop.
+- `grill-me/` — user-invoked grilling session.
+- `grill-with-docs/` — user-invoked grilling session that also builds docs (ADRs, glossary).
+- `tdd/` — model-invoked red-green-refactor test-driven development.
+
+Resync with:
+
+```sh
+scripts/sync-matt-skills.sh                 # from upstream main
+MATT_SKILLS_REF=<sha|tag|branch> scripts/sync-matt-skills.sh
+```
+
 ## Design principles
 
 - Keep standards in one place: `coding-standards/` owns the substantive rules.
