@@ -8,5 +8,8 @@ find . \
   -name SKILL.md \
   -not -path './node_modules/*' \
   -not -path './.git/*' \
+  -not -path './@repos/*' \
+  -not -path './repos/*' \
+  -not -path './.agent-repos/*' \
   | sed 's|^\./||' \
   | sort

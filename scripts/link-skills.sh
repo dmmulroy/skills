@@ -26,19 +26,34 @@ fi
 
 mkdir -p "$DEST"
 
+find_skills() {
+  find "$REPO" \
+    -name SKILL.md \
+    -not -path '*/node_modules/*' \
+    -not -path '*/.git/*' \
+    -not -path '*/@repos/*' \
+    -not -path '*/repos/*' \
+    -not -path '*/.agent-repos/*' \
+    -print0
+}
+
 while IFS= read -r -d '' skill_md; do
   src="$(dirname "$skill_md")"
   name="$(basename "$src")"
   target="$DEST/$name"
 
   if [ -e "$target" ] && [ ! -L "$target" ]; then
-    rm -rf "$target"
+    echo "error: $target already exists and is not a symlink." >&2
+    echo "Move or remove it manually before linking $name." >&2
+    exit 1
   fi
+done < <(find_skills)
+
+while IFS= read -r -d '' skill_md; do
+  src="$(dirname "$skill_md")"
+  name="$(basename "$src")"
+  target="$DEST/$name"
 
   ln -sfn "$src" "$target"
   echo "linked $name -> $src ($DEST)"
-done < <(find "$REPO" \
-  -name SKILL.md \
-  -not -path '*/node_modules/*' \
-  -not -path '*/.git/*' \
-  -print0)
+done < <(find_skills)
