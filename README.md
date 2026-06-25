@@ -1,48 +1,21 @@
 # Skills
 
-Personal agent skills for engineering, planning, writing, and tooling.
+Personal coding-agent skills for TypeScript software design, review, refactoring, and implementation workflows.
 
-Thanks to [Matt Pocock](https://github.com/mattpocock) for the inspiration and tooling patterns from his [`mattpocock/skills`](https://github.com/mattpocock/skills) repo.
+These skills are designed to work together:
 
-List or install with the open skills CLI:
+- `coding-standards/` — the shared standards package. Model-invoked. Defines the user's TypeScript design taste, vocabulary, non-negotiables, and topic references.
+- `code-review/` — user-invoked standards-backed review workflow. Selects a review target, loads relevant standards, requires evidence for findings, and stays review-only.
+- `tech-spec/` — user-invoked typed call-stack architecture handoff workflow. Produces code-shaped specs with alternatives, interfaces, seams, adapters, call stacks, and an RGR TDD plan.
+- `improve-codebase-architecture/` — user-invoked architecture scan workflow. Finds standards-backed refactor opportunities and prepares focused briefs for `tech-spec`.
 
-```bash
-npx skills@latest add dmmulroy/skills --list
-npx skills@latest add dmmulroy/skills
-```
+## Design principles
 
-Install a specific skill:
+- Keep standards in one place: `coding-standards/` owns the substantive rules.
+- Keep workflow skills thin: review, spec, and architecture skills route to the standards instead of duplicating them.
+- Prefer typed contracts, call stacks, interfaces, seams, and concrete evidence over vague architecture prose.
+- Treat user-invoked workflows as deliberate modes; do not surprise-run heavy reviews/specs/refactors.
 
-```bash
-npx skills@latest add dmmulroy/skills --skill codebase-design
-```
+## Credits
 
-## Engineering standards
-
-- [`code-review`](./code-review/SKILL.md) — review code against my coding standards and preferences.
-- [`codebase-design`](./codebase-design/SKILL.md) — design and implement code in my preferred software-design style.
-- [`coding-standards`](./coding-standards/SKILL.md) — shared reference package for vocabulary, design principles, review lens, and technology standards.
-- [`improve-codebase-architecture`](./improve-codebase-architecture/SKILL.md) — scan for deepening opportunities and choose one to explore.
-
-## Development
-
-Link local skills into the dotfiles-managed Agent Skills directory:
-
-```bash
-./scripts/link-skills.sh
-```
-
-List skills:
-
-```bash
-./scripts/list-skills.sh
-```
-
-Create a release note for user-facing changes:
-
-```bash
-npm run changeset
-```
-
-Merges to `main` run the release workflow, which opens/updates the Changesets version PR and tags releases after that PR is merged.
-
+Thanks to Matt Pocock for inspiration around writing high-quality agent skills, especially the `writing-great-skills` skill and its emphasis on predictable execution, progressive disclosure, context pointers, completion criteria, and pruning duplication.
