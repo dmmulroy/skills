@@ -106,7 +106,7 @@ Effect 4 guidance was audited against:
 
 For Effect 4 codebases using `@effect/vitest`, keep `effect` and `@effect/vitest` on the same version. Re-audit testing, schema-generation, and property-test assumptions when either package is upgraded.
 
-Use `@effect/vitest` rather than `@fast-check/vitest` in Effect 4 codebases. Effect depends on Fast-Check, re-exports it from `effect/testing`, and `@effect/vitest` owns the integration.
+Use `@effect/vitest` rather than `@fast-check/vitest` in Effect 4 codebases. Effect depends on Fast-Check, re-exports it from `effect/FastCheck`, and `@effect/vitest` owns the integration.
 
 In Vite+ projects, still run tests through `vp test`. If the package manager requires an explicit `vitest` peer for `@effect/vitest`, pin it to the exact Vitest version bundled by the installed Vite+ version.
 
