@@ -32,7 +32,9 @@ while IFS= read -r -d '' skill_md; do
   target="$DEST/$name"
 
   if [ -e "$target" ] && [ ! -L "$target" ]; then
-    rm -rf "$target"
+    echo "error: $target already exists and is not a symlink." >&2
+    echo "Move or remove it manually before linking $name." >&2
+    exit 1
   fi
 
   ln -sfn "$src" "$target"
